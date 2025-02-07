@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Appium Tests">
+    <!-- When you have subfolders under the features ,
+    you can create separate TestNG runners for each folder,
+    making it easy to run only specific sets of tests at a time. -->
+    <test name="Page Verification Tests">
+        <classes>
+            <class name="runners.TestRunner"/>
+        </classes>
+    </test>
+
+    <!-- Optional: Uncomment to add more tests -->
+    <!--
+    <test name="LoginPage Test">
+        <classes>
+            <class name="runners.LoginPageTestRunner"/>
+        </classes>
+    </test>
+    -->
+</suite>
