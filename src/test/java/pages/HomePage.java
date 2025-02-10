@@ -12,12 +12,12 @@ import java.time.Duration;
 public class HomePage {
 
     @AndroidFindBy(id = "android:id/decor_content_parent")
-    @iOSXCUITFindBy(accessibility = "header")
+    @iOSXCUITFindBy(accessibility = "Compute Sum")
     private WebElement header;
 
-    @AndroidFindBy(id = "android:id/navigationBarBackground")
-    @iOSXCUITFindBy(accessibility = "navBar")
-    private WebElement navBar;
+    @AndroidFindBy(accessibility = "Text")
+    @iOSXCUITFindBy(accessibility = "locationStatus")
+    private WebElement text;
 
     public HomePage() {
         RemoteWebDriver driver = AppiumDriverManager.getDriver();
@@ -36,17 +36,17 @@ public class HomePage {
     public void verifyElementIsDisplayed(String elementName) {
         switch(elementName.toLowerCase()) {
             case "header":
-                verifyElementDisplayed(header, elementName);
+                verifyElementDisplay(header, elementName);
                 break;
-            case "navigationbar":
-                verifyElementDisplayed(navBar, elementName);
+            case "text":
+                verifyElementDisplay(text, elementName);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown element: " + elementName);
         }
     }
 
-    private void verifyElementDisplayed(WebElement element, String elementName) {
+    private void verifyElementDisplay(WebElement element, String elementName) {
         if (element == null) { // Add null check first
             throw new RuntimeException(elementName + " element not found!");
         }
