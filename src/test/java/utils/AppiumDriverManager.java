@@ -24,6 +24,7 @@ public class AppiumDriverManager {
             String platformName = System.getProperty("platformName");
             String platformVersion = System.getProperty("platformVersion");
             String deviceName = System.getProperty("deviceName");
+            String udId = System.getProperty("udid");
             String appPath = System.getProperty("appPath");
 
             // Fallback to config
@@ -36,6 +37,9 @@ public class AppiumDriverManager {
             deviceName = (deviceName == null || deviceName.isEmpty())
                     ? ConfigReader.get("deviceName")
                     : deviceName;
+            udId = (udId == null || udId.isEmpty())
+                    ? ConfigReader.get("udId")
+                    : udId;
             appPath = (appPath == null || appPath.isEmpty())
                     ? ConfigReader.get("appPath")
                     : appPath;
@@ -49,10 +53,11 @@ public class AppiumDriverManager {
             caps.setCapability("appium:autoGrantPermissions", "true");
             caps.setCapability("platformName", platformName);
             caps.setCapability("appium:platformVersion", platformVersion);
-            caps.setCapability("appium:deviceName", deviceName);
+
 
             // Set platform-specific capabilities based on device type
             if (platformName.equalsIgnoreCase("Android")) {
+                caps.setCapability("appium:deviceName", deviceName);
                 caps.setCapability("appium:automationName", "UiAutomator2");
                 caps.setCapability("appium:appPackage", ConfigReader.get("android.appPackage"));
                 caps.setCapability("appium:appActivity", ConfigReader.get("android.appActivity"));
@@ -65,6 +70,7 @@ public class AppiumDriverManager {
                 driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), caps);
                 isDriverInitialized = true;
             } else if (platformName.equalsIgnoreCase("iOS")) {
+                caps.setCapability("appium:udid", udId);
                 caps.setCapability("automationName", "XCUITest");
                 caps.setCapability("bundleId", ConfigReader.get("ios.bundleId"));
                 caps.setCapability("useNewWDA", ConfigReader.get("ios.useNewWDA"));
@@ -76,7 +82,7 @@ public class AppiumDriverManager {
                 } else {
                     caps.setCapability("appium:fullReset", "true");
                 }
-                driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), caps);
+                driver = new IOSDriver(new URL("http://127.0.0.1:4723"), caps);
                 isDriverInitialized = true;
             }
         }

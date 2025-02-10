@@ -11,4 +11,4 @@ Feature: Home Page Verification
     Examples:
       | HomePageElement |
       | Header          |
-      | NavigationBar   |
+      | Text   |
