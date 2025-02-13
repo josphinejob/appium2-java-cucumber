@@ -54,13 +54,13 @@ public class AppiumDriverManager {
             caps.setCapability("platformName", platformName);
             caps.setCapability("appium:platformVersion", platformVersion);
 
-
             // Set platform-specific capabilities based on device type
             if (platformName.equalsIgnoreCase("Android")) {
                 caps.setCapability("appium:deviceName", deviceName);
                 caps.setCapability("appium:automationName", "UiAutomator2");
                 caps.setCapability("appium:appPackage", ConfigReader.get("android.appPackage"));
                 caps.setCapability("appium:appActivity", ConfigReader.get("android.appActivity"));
+                System.out.println("isDriverInitialized:"+isDriverInitialized);
                 if (isDriverInitialized){
                     caps.setCapability("appium:fullReset", "false");
                     caps.setCapability("appium:noReset", "true");
@@ -73,9 +73,8 @@ public class AppiumDriverManager {
                 caps.setCapability("appium:udid", udId);
                 caps.setCapability("automationName", "XCUITest");
                 caps.setCapability("bundleId", ConfigReader.get("ios.bundleId"));
-                caps.setCapability("useNewWDA", ConfigReader.get("ios.useNewWDA"));
-                caps.setCapability("wdaLocalPort", ConfigReader.get("ios.wdaLocalPort"));
                 caps.setCapability("autoAcceptAlerts", ConfigReader.get("ios.autoAcceptAlerts"));
+                System.out.println("isDriverInitialized:"+isDriverInitialized);
                 if (isDriverInitialized){
                     caps.setCapability("appium:fullReset", "false");
                     caps.setCapability("appium:noReset", "true");

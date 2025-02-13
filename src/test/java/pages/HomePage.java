@@ -12,7 +12,7 @@ import java.time.Duration;
 public class HomePage {
 
     @AndroidFindBy(id = "android:id/decor_content_parent")
-    @iOSXCUITFindBy(accessibility = "Compute Sum")
+    @iOSXCUITFindBy(accessibility = "LaunchImage")
     private WebElement header;
 
     @AndroidFindBy(accessibility = "Text")
