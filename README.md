@@ -16,7 +16,7 @@ Readable Tests: Uses Cucumber for behavior-driven development (BDD) with .featur
 Extensible: Follows the Page Object Model (POM) for maintainable and scalable tests.
 
 ## Prerequisites 🛠️
-Java JDK 8+
+Java JDK 11+
 
 Maven 3.8+
 
@@ -33,14 +33,13 @@ Emulator/Simulator or a Real Device
 ```
 src/test/
 ├── java/
-│   ├── com/example/
 │   │   ├── pages/          # Page Object Model classes
 │   │   ├── runners/        # Test runners (TestNG/Cucumber)
-│   │   ├── stepdefs/       # Cucumber step definitions
+│   │   ├── steps/          # Cucumber step definitions
 │   │   └── utils/          # Utilities (DriverManager, ElementActions)
 ├── resources/
 │   ├── features/           # Cucumber .feature files
-│   └── config.properties   # (Optional) Global configurations
+│   └── config/             # (Optional) Global configurations
 
 ```
 
@@ -98,10 +97,10 @@ Feature Files:
 Add .feature files in src/test/resources/features
 
 Step Definitions:
-Add step definitions in src/test/java/com/example/tests/steps
+Add step definitions in src/test/java/steps
 
 Page Objects:
-Add page classes in src/test/java/com/example/pages
+Add page classes in src/test/java/pages
 
 ## Utilities 🛠️
 The ElementActions and CommonActions classes provide reusable methods for common mobile interactions.
